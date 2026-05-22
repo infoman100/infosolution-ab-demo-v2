@@ -235,20 +235,101 @@ export function BInfoPlus({ setPage }) {
 
 export function BCsrList({ role, setPage }) {
   const isAdmin = role === "admin";
+  const columns = isAdmin
+    ? ["요청번호", "거래처", "제목", "요청구분", "업무구분", "상태", "우선순위", "요청일자", "요청자", "담당자", "공수(M/D)", "완료예정일", "완료일"]
+    : ["요청번호", "제목", "요청구분", "업무구분", "상태", "우선순위", "요청일자", "요청자", "담당자", "공수(M/D)", "완료예정일", "완료일"];
+
   return (
     <section className="w-full overflow-x-hidden bg-slate-950 px-3 py-10 text-white sm:px-4">
       <div className="mx-auto max-w-7xl">
-        <SectionTitle dark eyebrow={isAdmin ? "ADMIN CSR" : "CUSTOMER CSR"} title={isAdmin ? "CSR Command Center" : "고객 요청 현황"} desc="B안은 고객지원 목록을 대시보드와 모바일 카드 중심으로 재구성합니다." />
+        <SectionTitle
+          dark
+          eyebrow={isAdmin ? "ADMIN CSR" : "CUSTOMER CSR"}
+          title={isAdmin ? "CSR Command Center" : "고객 요청 현황"}
+          desc="B안은 상단 대시보드와 필터는 현대적으로 구성하고, PC에서는 테이블/list형으로 한눈에 확인되게 구성합니다."
+        />
+
         <div className="grid gap-4 md:grid-cols-4">
-          {(isAdmin ? [["미완료", "3420"], ["접수대기", "206"], ["처리중", "561"], ["검수요청", "1984"]] : [["잔여공수", "-0.3"], ["접수대기", "0"], ["진행중", "17"], ["완료", "62"]]).map(([k, v]) => <Card key={k} className="border-white/10 bg-white/10 p-5 text-white"><p className="text-sm font-black text-cyan-200">{k}</p><p className="mt-2 text-3xl font-black">{v}</p></Card>)}
+          {(isAdmin
+            ? [["미완료", "3420"], ["접수대기", "206"], ["처리중", "561"], ["검수요청", "1984"]]
+            : [["잔여공수", "-0.3"], ["접수대기", "0"], ["진행중", "17"], ["완료", "62"]]
+          ).map(([k, v]) => (
+            <Card key={k} className="border-white/10 bg-white/10 p-5 text-white">
+              <p className="text-sm font-black text-cyan-200">{k}</p>
+              <p className="mt-2 text-3xl font-black">{v}</p>
+            </Card>
+          ))}
         </div>
-        <div className="mt-6 flex min-w-0 flex-col gap-2 sm:flex-row">
-          <input className="h-12 min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 text-white placeholder:text-slate-400" placeholder="검색어를 입력하세요" />
-          <Button variant="cyan" className="h-12"><Search className="mr-2 h-4 w-4" />검색</Button>
-          <Button variant="outlineDark" className="h-12"><Download className="mr-2 h-4 w-4" />Excel</Button>
+
+        <Card className="mt-6 border-white/10 bg-white/10 p-4 text-white">
+          <div className="flex min-w-0 flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
+            <div className="flex min-w-0 flex-col gap-2 sm:flex-row">
+              <select className="h-11 rounded-2xl border border-white/10 bg-slate-900 px-4 text-sm text-white">
+                <option>요청일자</option>
+              </select>
+              <input className="h-11 rounded-2xl border border-white/10 bg-slate-900 px-4 text-sm text-white" value="2025-05-22" readOnly />
+              <input className="h-11 rounded-2xl border border-white/10 bg-slate-900 px-4 text-sm text-white" value="2026-05-22" readOnly />
+            </div>
+            <div className="flex min-w-0 flex-col gap-2 sm:flex-row">
+              <input className="h-11 min-w-0 flex-1 rounded-2xl border border-white/10 bg-slate-900 px-4 text-sm text-white placeholder:text-slate-400" placeholder="검색어를 입력하세요" />
+              <Button variant="cyan" className="h-11 shrink-0"><Search className="mr-2 h-4 w-4" />검색</Button>
+              <Button variant="outlineDark" className="h-11 shrink-0"><Download className="mr-2 h-4 w-4" />Excel</Button>
+            </div>
+          </div>
+        </Card>
+
+        {/* PC: table/list */}
+        <div className="mt-6 hidden overflow-hidden rounded-[1.6rem] border border-white/10 bg-white shadow-2xl lg:block">
+          <table className="w-full border-collapse text-sm text-slate-900">
+            <thead className="bg-slate-100 text-xs font-black text-slate-500">
+              <tr>
+                {columns.map((c) => (
+                  <th key={c} className="border-b border-slate-200 px-3 py-4 text-left">{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {csrRows.map((row) => (
+                <tr key={row.id} onClick={() => setPage("csrDetail")} className="cursor-pointer border-b border-slate-100 transition hover:bg-blue-50">
+                  <td className="px-3 py-4 font-bold">{row.id}</td>
+                  {isAdmin && <td className="px-3 py-4 font-bold text-blue-600">{row.company}</td>}
+                  <td className="max-w-[300px] px-3 py-4 font-bold text-blue-700">{row.title}</td>
+                  <td className="px-3 py-4">{row.type}</td>
+                  <td className="px-3 py-4">{row.work}</td>
+                  <td className="px-3 py-4"><Badge className={statusColor[row.status]}>{row.status}</Badge></td>
+                  <td className="px-3 py-4">{row.priority}</td>
+                  <td className="px-3 py-4">{row.requestDate}</td>
+                  <td className="px-3 py-4">{row.requester}</td>
+                  <td className="px-3 py-4">{row.manager}</td>
+                  <td className="px-3 py-4 text-red-500">{row.md}</td>
+                  <td className="px-3 py-4">{row.due || "-"}</td>
+                  <td className="px-3 py-4">{row.done || "-"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className="mt-6 grid gap-4">
-          {csrRows.map((row) => <button key={row.id} onClick={() => setPage("csrDetail")} className="min-w-0 text-left"><Card className="min-w-0 border-white/10 bg-white p-5 text-slate-950 shadow-xl"><div className="flex items-center justify-between gap-2"><Badge className={statusColor[row.status]}>{row.status}</Badge><b>{row.priority}</b></div><p className="mt-3 break-words text-lg font-black text-blue-700">{row.title}</p><p className="mt-2 text-sm text-slate-500">{isAdmin ? `${row.company} · ` : ""}{row.id} · {row.work} · {row.manager}</p></Card></button>)}
+
+        {/* Mobile: card */}
+        <div className="mt-6 grid min-w-0 gap-4 lg:hidden">
+          {csrRows.map((row) => (
+            <button key={row.id} onClick={() => setPage("csrDetail")} className="min-w-0 text-left">
+              <Card className="min-w-0 border-white/10 bg-white p-5 text-slate-950 shadow-xl">
+                <div className="flex items-center justify-between gap-2">
+                  <Badge className={statusColor[row.status]}>{row.status}</Badge>
+                  <b className="shrink-0 text-sm">{row.priority}</b>
+                </div>
+                <p className="mt-3 break-words text-lg font-black leading-6 text-blue-700">{row.title}</p>
+                <p className="mt-2 break-words text-sm text-slate-500">{isAdmin ? `${row.company} · ` : ""}{row.id} · {row.work} · {row.manager}</p>
+                <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-bold text-slate-500">
+                  <span>요청일 {row.requestDate}</span>
+                  <span>요청자 {row.requester}</span>
+                  <span>공수 {row.md}</span>
+                  <span>완료일 {row.done || "-"}</span>
+                </div>
+              </Card>
+            </button>
+          ))}
         </div>
       </div>
     </section>
