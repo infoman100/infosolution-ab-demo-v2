@@ -162,10 +162,35 @@ export const csrRows = [
     due: "",
     done: "2026-03-25",
     body: "본사에서 베트남 SMT MES 접속이 되지 않습니다. 서버 상태 및 네트워크 접속 가능 여부 확인 부탁드립니다.",
+    attachments: [],
     replies: [
-      { author: "고객", date: "2026-03-25 09:42", text: "본사 접속 테스트 시 화면이 열리지 않습니다. 확인 부탁드립니다." },
-      { author: "담당자", date: "2026-03-25 10:18", text: "VPN 접속 경로와 방화벽 정책 확인 후 조치 완료했습니다. 재접속 확인 부탁드립니다." },
-      { author: "고객", date: "2026-03-25 10:35", text: "현재 접속 정상 확인했습니다." },
+      {
+        author: "tien.tm",
+        role: "customer",
+        org: "시노펙스(베트남) 전산팀",
+        date: "2026-03-25 09:42",
+        text: "본사 접속 테스트 시 화면이 열리지 않습니다. 확인 부탁드립니다.",
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "전원태",
+        role: "staff",
+        org: "인포솔루션 기술지원팀",
+        date: "2026-03-25 10:18",
+        text: "VPN 접속 경로와 방화벽 정책 확인 후 조치 완료했습니다. 재접속 확인 부탁드립니다.",
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "tien.tm",
+        role: "customer",
+        org: "시노펙스(베트남) 전산팀",
+        date: "2026-03-25 10:35",
+        text: "현재 접속 정상 확인했습니다.",
+        images: [],
+        attachments: [],
+      },
     ],
   },
   {
@@ -183,29 +208,177 @@ export const csrRows = [
     due: "",
     done: "",
     body: "Routing 등록 및 제조 BOM 연계 기준에 대해 문의드립니다. 공정 순서 변경 시 반영 기준 확인 부탁드립니다.",
+    attachments: [],
     replies: [
-      { author: "고객", date: "2026-03-12 14:20", text: "Routing 순서 변경 후 일부 화면에서 기존 순서로 보입니다." },
-      { author: "담당자", date: "2026-03-12 15:05", text: "관련 기준정보와 화면 반영 로직 확인 중입니다. 확인 후 회신드리겠습니다." },
+      {
+        author: "이용준",
+        role: "customer",
+        org: "시노펙스(베트남) 생산팀",
+        date: "2026-03-12 14:20",
+        text: "Routing 순서 변경 후 일부 화면에서 기존 순서로 보입니다.",
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "안상현",
+        role: "staff",
+        org: "인포솔루션 MES1팀",
+        date: "2026-03-12 15:05",
+        text: "관련 기준정보와 화면 반영 로직 확인 중입니다. 확인 후 회신드리겠습니다.",
+        images: [],
+        attachments: [],
+      },
     ],
   },
   {
-    id: "260121-018",
-    company: "시노펙스(베트남)",
-    title: "Source code of MES read data program",
-    type: "데이터수정",
+    id: "251223-007",
+    company: "우리이앤엘(베트남)",
+    title: "신규 라벨 생성 및 라벨 발행 화면 개발 요청 건",
+    type: "신규개발",
     work: "MES",
-    status: "검수요청",
+    status: "완료",
     priority: "긴급",
-    requestDate: "2026-01-21",
-    requester: "tien.tm",
-    manager: "전용호",
-    md: "0 / 0",
-    due: "",
-    done: "",
-    body: "MES read data program 관련 소스 및 데이터 처리 기준 확인 요청드립니다.",
+    requestDate: "2025-12-23",
+    requester: "DANGCONG",
+    manager: "최유정 / 조광호",
+    md: "4 / 5.3",
+    due: "2026-01-16",
+    done: "2026-02-09",
+    body: `신규 라벨 생성 및 라벨 발행 화면 개발 요청드립니다.
+ 
+1. 라벨 양식 (사이즈 4cm × 7cm)
+2. 신규 화면 개발
+ 
+적용 공장 : PKG 공장
+상세 요청 사항은 첨부 파일을 참고해 주시기 바랍니다.
+개발 소요 시간과 예상 공수를 검토하신 후 회신 부탁드립니다.
+추가로 문의 사항이 있으시면 언제든지 연락 주시면 감사하겠습니다.`,
+    attachments: [
+      { name: "라벨 양식.pptx", type: "pptx" },
+    ],
     replies: [
-      { author: "고객", date: "2026-01-21 11:10", text: "프로그램 데이터 처리 방식 확인이 필요합니다." },
-      { author: "담당자", date: "2026-01-21 13:45", text: "요청하신 기준 정리 후 검수 요청 상태로 변경했습니다." },
+      {
+        author: "최유정",
+        role: "staff",
+        org: "인포솔루션 기술지원팀",
+        date: "2025-12-24 14:22",
+        text: "기존 PKG 출하 라벨 발행(INVF0160) 화면과 유사하게 보내주신 PPT처럼 새로운 화면/라벨을 개발하는 요청건이 맞는 지 확인 부탁드립니다.",
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "DANGCONG",
+        role: "customer",
+        org: "우리이앤엘(베트남) 전산팀",
+        date: "2025-12-24 14:39",
+        text: "넵 맞습니다",
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "최유정",
+        role: "staff",
+        org: "인포솔루션 기술지원팀",
+        date: "2025-12-24 15:58",
+        text: "개발 서버에 반영 해두었습니다. 요청하신 방향이 맞는 지 확인 부탁드립니다.",
+        images: ["dev_screen_01.png", "dev_screen_02.png"],
+        attachments: [],
+      },
+      {
+        author: "DANGCONG",
+        role: "customer",
+        org: "우리이앤엘(베트남) 전산팀",
+        date: "2025-12-26 12:22",
+        text: `확인해보니 일부 사항이 잘못 표시되고 있습니다.
+ 
+1. Part No 잘못 표시 — 현재 품목명으로 표시됨 → 모델명으로 변경 요청
+2. Lot No 잘못 표시 — 현재 Mes LOT으로 표시 → ERP Lot No로 변경 요청
+3. Rank No 잘못 표시 — 현재 Mes LOT번호로 표시됨 → 고객 랭크 정보로 수정 요청
+ 
+추가 수정 부탁드립니다. 감사합니다.`,
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "최유정",
+        role: "staff",
+        org: "인포솔루션 기술지원팀",
+        date: "2025-12-26 16:25",
+        text: `고객 랭크 정보에 대한 문의가 있어 유선으로 통화한 내용입니다. 아래 내용으로 협의가 되어 개발을 진행하겠습니다.
+ 
+1. 내부 관리 랭크
+   - [PPMF0240 MODEL별 TH BIN RANK값 관리]에 등록된 3자리 랭크 데이터로 표기 예정
+2. 고객 랭크
+   - A1B, A2B → A1B / A3B, A4B → A2B / A5B, A6B → A3B
+3. 라벨상 [MSL:2a] 값은 고정 값으로 표기`,
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "DANGCONG",
+        role: "customer",
+        org: "우리이앤엘(베트남) 전산팀",
+        date: "2026-01-02 17:39",
+        text: `확인 결과를 공유드립니다.
+ 
+1. 원본 라벨에 비해 글자가 더 작습니다
+   예: Part No 문구에서 'P' 글자의 높이 2.5mm 요청 → 실제 출력 2.0mm
+2. 글자 폰트가 Arial 기준으로 적용됐는지 확인 필요
+3. Lot No 정보 잘못 표시 — 내부 관리 랭크(A5B)로 표시됨
+4. 고정값 잘못 표시 — MSL;2a → MSL:2a (; → :)
+ 
+추가 수정 부탁드립니다. 감사합니다.`,
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "조광호",
+        role: "staff",
+        org: "인포솔루션 MES1팀",
+        date: "2026-01-08 10:03",
+        text: "유선상으로 말씀드린 확인내용 매뉴얼로 작성하여 첨부드립니다. 확인 후 회신 부탁드립니다.",
+        images: [],
+        attachments: [
+          { name: "Zebra Printer 폰트 설치 매뉴얼.pptx", type: "pptx" },
+          { name: "Arial.mmf", type: "file" },
+        ],
+      },
+      {
+        author: "DANGCONG",
+        role: "customer",
+        org: "우리이앤엘(베트남) 전산팀",
+        date: "2026-01-14 15:17",
+        text: `확인 결과 정상적으로 반영되지 않은 상태로 확인되었습니다.
+이전에 제가 공유드린 디자인 기준과 동일하게 적용되도록 수정 요청드립니다.
+아울러 전체적인 위치에 대한 재확인도 필요할 것 같습니다.`,
+        images: [],
+        attachments: [
+          { name: "SH-WH2012HI(RRC)_rev2.nlbl", type: "file" },
+        ],
+      },
+      {
+        author: "최유정",
+        role: "staff",
+        org: "인포솔루션 기술지원팀",
+        date: "2026-01-26 15:25",
+        text: `RANK 값 조건 해제,
+SEHWA COMMERCE 중앙 정렬,
+15번 높이 조정,
+9번 위치 조정 수정 반영 완료했습니다.
+ 
+확인 부탁드립니다. 감사합니다.`,
+        images: [],
+        attachments: [],
+      },
+      {
+        author: "DANGCONG",
+        role: "customer",
+        org: "우리이앤엘(베트남) 전산팀",
+        date: "2026-02-09 09:35",
+        text: "최종 확인 결과, 수정하지 않아도 됩니다. 업무가 혼동되어 죄송합니다. 감사합니다.",
+        images: [],
+        attachments: [],
+      },
     ],
   },
 ];
