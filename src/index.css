@@ -6,3 +6,234 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; }
 button, input, select, textarea { font: inherit; }
+
+/* ─────────────────────────────────────────
+   Theme Compare Tokens
+   classic: 기존안
+   modern : 신규안 (채도 낮춤 + 텍스트 기존 유지)
+───────────────────────────────────────── */
+
+.theme-root {
+  --page-bg: #ffffff;
+  --section-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --card-soft: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --theme-line: #e2e8f0;
+  --theme-primary: #2563eb;
+  --theme-accent: #06b6d4;
+  --theme-hero-from: #0f172a;
+  --theme-hero-to: #082f49;
+}
+
+/* 기존안 + 라이트 — 변경 없음 */
+.theme-root[data-design="classic"][data-theme="light"] {
+  --page-bg: #ffffff;
+  --section-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --card-soft: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --theme-line: #e2e8f0;
+  --theme-primary: #2563eb;
+  --theme-accent: #06b6d4;
+  --theme-hero-from: #0f172a;
+  --theme-hero-to: #082f49;
+}
+
+/* 기존안 + 다크 — 변경 없음 */
+.theme-root[data-design="classic"][data-theme="dark"] {
+  --page-bg: #020617;
+  --section-bg: #0f172a;
+  --card-bg: #111827;
+  --card-soft: #1f2937;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --theme-line: rgba(255, 255, 255, 0.10);
+  --theme-primary: #38bdf8;
+  --theme-accent: #22d3ee;
+  --theme-hero-from: #020617;
+  --theme-hero-to: #0f172a;
+}
+
+/* ─────────────────────────────────────────
+   신규안 + 라이트
+   - 배경: 뉴트럴 그레이 (파란빛 제거)
+   - 텍스트: 기존과 동일하게 (흐려지지 않게)
+   - cyan 강조: 중간 지점 (형광→차분)
+───────────────────────────────────────── */
+.theme-root[data-design="modern"][data-theme="light"] {
+  --page-bg: #f4f5f7;
+  --section-bg: #eceef2;
+  --card-bg: #ffffff;
+  --card-soft: #f4f5f7;
+  --text-main: #0f172a;       /* 기존과 동일 */
+  --text-muted: #64748b;      /* 기존과 동일 */
+  --theme-line: #d8dde6;
+  --theme-primary: #3d5a8a;   /* 채도 낮춘 블루 */
+  --theme-accent: #0ea5c8;    /* cyan 중간 지점 */
+  --theme-hero-from: #161f30;
+  --theme-hero-to: #0d2d3e;
+}
+
+/* ─────────────────────────────────────────
+   신규안 + 다크
+   - 배경: 채도 낮춘 네이비
+   - 텍스트: 기존과 동일하게
+   - cyan 강조: 중간 지점
+───────────────────────────────────────── */
+.theme-root[data-design="modern"][data-theme="dark"] {
+  --page-bg: #141b27;
+  --section-bg: #1a2234;
+  --card-bg: #1f2b3e;
+  --card-soft: #263449;
+  --text-main: #f8fafc;       /* 기존과 동일 */
+  --text-muted: #94a3b8;      /* 기존과 동일 */
+  --theme-line: rgba(140, 158, 184, 0.16);
+  --theme-primary: #5b9ec9;   /* cyan 중간 지점 */
+  --theme-accent: #22c4e0;    /* 기존 22d3ee 보다 약간 낮춤 */
+  --theme-hero-from: #111827;
+  --theme-hero-to: #0d2233;
+}
+
+/* ─────────────────────────────────────────
+   Modern Design Color Overrides
+───────────────────────────────────────── */
+
+.theme-root[data-design="modern"] {
+  background-color: var(--page-bg);
+  color: var(--text-main);
+}
+
+/* 신규 Light — 배경 */
+.theme-root[data-design="modern"][data-theme="light"] .bg-white {
+  background-color: var(--card-bg) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .bg-slate-50 {
+  background-color: var(--section-bg) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .bg-slate-100 {
+  background-color: var(--card-soft) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .border-slate-100,
+.theme-root[data-design="modern"][data-theme="light"] .border-slate-200,
+.theme-root[data-design="modern"][data-theme="light"] .border-slate-300 {
+  border-color: var(--theme-line) !important;
+}
+
+/* 신규 Light — 텍스트는 기존 유지, 강조색만 교체 */
+.theme-root[data-design="modern"][data-theme="light"] .text-blue-600,
+.theme-root[data-design="modern"][data-theme="light"] .text-blue-700 {
+  color: var(--theme-primary) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .bg-blue-600,
+.theme-root[data-design="modern"][data-theme="light"] .bg-blue-700 {
+  background-color: var(--theme-primary) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .bg-blue-50 {
+  background-color: #eaf0f7 !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .text-blue-700 {
+  color: var(--theme-primary) !important;
+}
+.theme-root[data-design="modern"][data-theme="light"] .text-cyan-300,
+.theme-root[data-design="modern"][data-theme="light"] .text-cyan-400,
+.theme-root[data-design="modern"][data-theme="light"] .text-cyan-500 {
+  color: var(--theme-accent) !important;
+}
+
+/* 신규 Dark — 배경 */
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:bg-slate-950,
+.theme-root[data-design="modern"][data-theme="dark"] .bg-slate-950 {
+  background-color: var(--page-bg) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:bg-slate-900,
+.theme-root[data-design="modern"][data-theme="dark"] .bg-slate-900 {
+  background-color: var(--card-bg) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:bg-slate-800,
+.theme-root[data-design="modern"][data-theme="dark"] .bg-slate-800 {
+  background-color: var(--card-soft) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:border-white\/10,
+.theme-root[data-design="modern"][data-theme="dark"] .border-white\/10 {
+  border-color: var(--theme-line) !important;
+}
+
+/* 신규 Dark — 텍스트는 기존 유지, 강조색만 교체 */
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:text-cyan-300,
+.theme-root[data-design="modern"][data-theme="dark"] .text-cyan-300 {
+  color: var(--theme-primary) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:bg-cyan-500,
+.theme-root[data-design="modern"][data-theme="dark"] .bg-cyan-500 {
+  background-color: var(--theme-primary) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .dark\:text-cyan-400,
+.theme-root[data-design="modern"][data-theme="dark"] .text-cyan-400 {
+  color: var(--theme-accent) !important;
+}
+
+/* ─────────────────────────────────────────
+   그림자
+───────────────────────────────────────── */
+.theme-root[data-design="modern"] .shadow-sm {
+  box-shadow: 0 2px 12px rgba(20, 30, 48, 0.06) !important;
+}
+.theme-root[data-design="modern"] .shadow-xl,
+.theme-root[data-design="modern"] .shadow-2xl {
+  box-shadow: 0 16px 40px rgba(20, 30, 48, 0.10) !important;
+}
+.theme-root[data-design="modern"][data-theme="dark"] .shadow-sm,
+.theme-root[data-design="modern"][data-theme="dark"] .shadow-xl,
+.theme-root[data-design="modern"][data-theme="dark"] .shadow-2xl {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* ─────────────────────────────────────────
+   전환 애니메이션
+───────────────────────────────────────── */
+.theme-root[data-design="modern"] section,
+.theme-root[data-design="modern"] header,
+.theme-root[data-design="modern"] footer,
+.theme-root[data-design="modern"] div,
+.theme-root[data-design="modern"] button {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: 220ms;
+}
+
+/* ─────────────────────────────────────────
+   Theme Utility Classes
+───────────────────────────────────────── */
+.theme-page      { background-color: var(--page-bg);    color: var(--text-main); }
+.theme-section   { background-color: var(--section-bg); color: var(--text-main); }
+.theme-card-bg   { background-color: var(--card-bg);    color: var(--text-main); }
+.theme-card-soft { background-color: var(--card-soft);  color: var(--text-main); }
+.theme-border    { border-color: var(--theme-line); }
+.theme-muted     { color: var(--text-muted); }
+.theme-primary-text { color: var(--theme-primary); }
+.theme-accent-text  { color: var(--theme-accent); }
+
+.theme-hero {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(37, 99, 235, 0.35), transparent 30%),
+    radial-gradient(circle at 90% 0%, rgba(6, 182, 212, 0.24), transparent 26%),
+    linear-gradient(135deg, var(--theme-hero-from), var(--theme-hero-to));
+}
+
+/* 신규안 Hero — 채도 살짝만 낮춤 */
+.theme-root[data-design="modern"] .theme-hero {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(40, 85, 150, 0.28), transparent 30%),
+    radial-gradient(circle at 90% 0%, rgba(6, 160, 200, 0.20), transparent 26%),
+    linear-gradient(135deg, var(--theme-hero-from), var(--theme-hero-to));
+}
+
+.theme-hero-grid {
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}

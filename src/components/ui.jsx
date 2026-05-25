@@ -7,14 +7,19 @@ export function cx(...classes) {
 export function Button({ children, active, variant = "default", className = "", ...props }) {
   const variants = {
     default: active
-      ? "bg-blue-600 text-white"
-      : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-200 dark:border-white/10 dark:hover:bg-white/20",
+      ? "bg-[var(--theme-primary)] text-white"
+      : "border border-[var(--theme-line)] bg-[var(--card-bg)] text-[var(--text-main)] hover:bg-[var(--card-soft)]",
     dark: active
-      ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950"
-      : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 dark:bg-white/10 dark:text-slate-200 dark:border-white/10",
-    primary: "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400",
-    cyan: "bg-cyan-300 text-slate-950 hover:bg-cyan-200",
-    outlineDark: "border border-white/20 bg-white/5 text-white hover:bg-white/10",
+      ? "bg-[var(--text-main)] text-[var(--page-bg)]"
+      : "border border-[var(--theme-line)] bg-[var(--card-bg)] text-[var(--text-main)] hover:bg-[var(--card-soft)]",
+    primary:
+      "bg-[var(--theme-primary)] text-white hover:brightness-95",
+    cyan:
+      "bg-[var(--theme-accent)] text-slate-950 hover:brightness-105",
+    outlineDark:
+      "border border-white/20 bg-white/5 text-white hover:bg-white/10",
+    ghost:
+      "text-[var(--text-muted)] hover:bg-[var(--card-soft)] hover:text-[var(--text-main)]",
   };
 
   return (
@@ -33,7 +38,12 @@ export function Button({ children, active, variant = "default", className = "", 
 
 export function Badge({ children, className = "" }) {
   return (
-    <span className={cx("inline-flex items-center rounded-full px-3 py-1 text-xs font-black", className)}>
+    <span
+      className={cx(
+        "inline-flex items-center rounded-full px-3 py-1 text-xs font-black",
+        className
+      )}
+    >
       {children}
     </span>
   );
@@ -41,11 +51,12 @@ export function Badge({ children, className = "" }) {
 
 export function Card({ children, className = "" }) {
   return (
-    <div className={cx(
-      "rounded-[1.6rem] border border-slate-200 bg-white shadow-sm",
-      "dark:border-white/10 dark:bg-slate-900",
-      className
-    )}>
+    <div
+      className={cx(
+        "rounded-[1.6rem] border border-[var(--theme-line)] bg-[var(--card-bg)] shadow-sm",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -53,24 +64,32 @@ export function Card({ children, className = "" }) {
 
 export function SectionTitle({ eyebrow, title, desc, align = "center", dark = false }) {
   return (
-    <div className={cx("mb-10", align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl")}>
-      <p className={cx(
-        "mb-3 text-xs font-black uppercase tracking-[0.25em]",
-        dark ? "text-cyan-300" : "text-blue-600 dark:text-cyan-300"
-      )}>
+    <div className={cx("mb-10", align === "center" ? "mx-auto max-w-5xl text-center" : "max-w-5xl")}>
+      <p
+        className={cx(
+          "mb-3 text-xs font-black uppercase tracking-[0.25em]",
+          dark ? "text-cyan-300" : "text-[var(--theme-primary)]"
+        )}
+      >
         {eyebrow}
       </p>
-      <h2 className={cx(
-        "text-3xl font-black tracking-tight md:text-5xl",
-        dark ? "text-white" : "text-slate-950 dark:text-white"
-      )}>
+
+      <h2
+        className={cx(
+          "text-3xl font-black tracking-tight md:text-5xl",
+          dark ? "text-white" : "text-[var(--text-main)]"
+        )}
+      >
         {title}
       </h2>
+
       {desc && (
-        <p className={cx(
-          "mt-5 text-base leading-8 md:text-lg",
-          dark ? "text-slate-300" : "text-slate-600 dark:text-slate-400"
-        )}>
+        <p
+          className={cx(
+            "mt-5 text-base leading-8 md:text-lg",
+            dark ? "text-slate-300" : "text-[var(--text-muted)]"
+          )}
+        >
           {desc}
         </p>
       )}
